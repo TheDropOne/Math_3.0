@@ -12,8 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.appodeal.ads.Appodeal;
-
 public class HelpAuthor extends AppCompatActivity {
     final String LOG_TAG = "myLogs";
     int idItem5 = -1;
@@ -45,8 +43,8 @@ public class HelpAuthor extends AppCompatActivity {
     private void whatActivity() {
         switch(idItem5){
             case 0: {
-                if (Appodeal.isLoaded(Appodeal.INTERSTITIAL)) {
-                    Appodeal.show(this, Appodeal.INTERSTITIAL);
+                if (MainActivity.mInterstitialAd.isLoaded()) {
+                    MainActivity.mInterstitialAd.show();
                 }
             } break;
             case 1:

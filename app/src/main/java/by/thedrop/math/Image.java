@@ -13,8 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.appodeal.ads.Appodeal;
-
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 
@@ -32,7 +30,7 @@ public class Image extends ActionBarActivity {
             MainActivity.adIn++;
             System.out.println(MainActivity.adIn);
 
-            if (MainActivity.adIn == 3) Appodeal.show(this, Appodeal.INTERSTITIAL);
+            if (MainActivity.adIn == 3) MainActivity.mInterstitialAd.show();
 
             ImageView imgView = (ImageView) findViewById(R.id.imageView);
 
@@ -60,7 +58,7 @@ public class Image extends ActionBarActivity {
                     startActivity(Intent.createChooser(shareIntent, "Поделиться!"));
                 }
             });
-            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+            //Appodeal.show(this, Appodeal.BANNER_BOTTOM);
         } catch (Exception ex) {
             ex.printStackTrace();
             Toast.makeText(this,"Упс, что-то пошло не так",Toast.LENGTH_SHORT).show();

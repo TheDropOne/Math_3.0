@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import com.appodeal.ads.Appodeal;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
@@ -22,7 +23,7 @@ public class MainActivity extends ListActivity {
     public static int textNumber = 0;
 
     //-------------Ads xujnya
-    private InterstitialAd mInterstitialAd;
+    public static InterstitialAd mInterstitialAd;
     public static InterstitialAd imageAd;
     public boolean isAdNotLooked = false;
     public static int adIn = 1;
@@ -42,10 +43,6 @@ public class MainActivity extends ListActivity {
         getListView().setAdapter(adapter);
 
 
-        //Appodeal.confirm(Appodeal.SKIPPABLE_VIDEO);
-        String appKey = "17c9e8a1529a23fce9c8afe2e137217d370f709fb50a291f";
-        Appodeal.disableLocationPermissionCheck();
-        Appodeal.initialize(this, appKey, Appodeal.INTERSTITIAL | Appodeal.BANNER);
 
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
@@ -56,11 +53,24 @@ public class MainActivity extends ListActivity {
                 whatActivity();
             }
         });
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+            }
+        });
+
 
         AnalyticsApplication application = (AnalyticsApplication) getApplication();
         Tracker mTracker = application.getDefaultTracker();
     }
-
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
+    }
 
 
     public void whatActivity(){
