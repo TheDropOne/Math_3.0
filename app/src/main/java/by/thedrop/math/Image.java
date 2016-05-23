@@ -58,6 +58,7 @@ public class Image extends ActionBarActivity {
                     startActivity(Intent.createChooser(shareIntent, "Поделиться!"));
                 }
             });
+
             //Appodeal.show(this, Appodeal.BANNER_BOTTOM);
         } catch (Exception ex) {
             ex.printStackTrace();
