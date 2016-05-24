@@ -33,7 +33,6 @@ public class Image extends ActionBarActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_image);
             MainActivity.adIn++;
-            System.out.println(MainActivity.adIn);
 
             ad = new InterstitialAd(this);
             ad.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
