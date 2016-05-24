@@ -12,15 +12,31 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 public class HelpAuthor extends AppCompatActivity {
     final String LOG_TAG = "myLogs";
     int idItem5 = -1;
+    public static InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_author);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+            }
+        });
+        requestNewInterstitial();
 
         String[] classes = {"Посмотреть рекламу","Написать хороший отзыв:)","Вступить в нашу группу вк","Рассказать друзьям!", ""};//     18
         ListView list = (ListView) findViewById(R.id.listHelp);
@@ -38,13 +54,19 @@ public class HelpAuthor extends AppCompatActivity {
                 whatActivity();
             }
         });
+
+    }
+
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mInterstitialAd.loadAd(adRequest);
     }
 
     private void whatActivity() {
         switch(idItem5){
             case 0: {
-                if (MainActivity.mInterstitialAd.isLoaded()) {
-                    MainActivity.mInterstitialAd.show();
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
                 }
             } break;
             case 1:

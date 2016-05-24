@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import com.appodeal.ads.Appodeal;
 
 public class PartB extends ListActivity {
     final String LOG_TAG = "myLogs";
@@ -61,7 +60,8 @@ public class PartB extends ListActivity {
         if(EGE.number==2014){
             switch (idItem5){
                 case 0: {
-                    Appodeal.show(this, Appodeal.REWARDED_VIDEO);
+                    Intent intent2 = new Intent(this, HelpAuthor.class);
+                    startActivity(intent2);
                 } break;
                 case 1: MainActivity.number = R.drawable.ct2014b1;              break;
                 case 2: MainActivity.number = R.drawable.ct2014b2;              break;
@@ -80,12 +80,8 @@ public class PartB extends ListActivity {
         if(EGE.number==2015){
             switch (idItem5){
                 case 0: {
-                    if (Appodeal.isLoaded(Appodeal.NON_SKIPPABLE_VIDEO)) {
-                        Appodeal.show(this, Appodeal.NON_SKIPPABLE_VIDEO);
-                    } else
-                    if(Appodeal.isLoaded(Appodeal.INTERSTITIAL)) {
-                        Appodeal.show(this, Appodeal.INTERSTITIAL);
-                    }
+                    Intent intent2 = new Intent(this, HelpAuthor.class);
+                    startActivity(intent2);
                 } break;
                 case 1: MainActivity.number = R.drawable.ct2015b1;              break;
                 case 2: MainActivity.number = R.drawable.ct2015b2;              break;

@@ -8,7 +8,6 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.Window;
 import android.widget.TextView;
 
-import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class TextActivity extends ActionBarActivity {
@@ -28,12 +27,12 @@ public class TextActivity extends ActionBarActivity {
         assert actionBar != null;
         actionBar.hide();
 
-        Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        //Appodeal.show(this, Appodeal.BANNER_BOTTOM);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Appodeal.onResume(this, Appodeal.BANNER_BOTTOM);
+        //Appodeal.onResume(this, Appodeal.BANNER_BOTTOM);
     }
 }

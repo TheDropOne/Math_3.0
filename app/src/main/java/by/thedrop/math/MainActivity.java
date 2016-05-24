@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
@@ -23,7 +21,7 @@ public class MainActivity extends ListActivity {
     public static int textNumber = 0;
 
     //-------------Ads xujnya
-    public static InterstitialAd mInterstitialAd;
+
     public static InterstitialAd imageAd;
     public boolean isAdNotLooked = false;
     public static int adIn = 1;
@@ -53,23 +51,11 @@ public class MainActivity extends ListActivity {
                 whatActivity();
             }
         });
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
 
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                requestNewInterstitial();
-            }
-        });
 
 
         AnalyticsApplication application = (AnalyticsApplication) getApplication();
         Tracker mTracker = application.getDefaultTracker();
-    }
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mInterstitialAd.loadAd(adRequest);
     }
 
 
