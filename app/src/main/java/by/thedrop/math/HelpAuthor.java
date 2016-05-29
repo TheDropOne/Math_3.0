@@ -28,7 +28,8 @@ public class HelpAuthor extends AppCompatActivity {
         setContentView(R.layout.activity_help_author);
 
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-4167275856253568/3267754937");
+
 
         mInterstitialAd.setAdListener(new AdListener() {
             @Override

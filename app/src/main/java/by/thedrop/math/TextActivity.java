@@ -8,6 +8,8 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class TextActivity extends ActionBarActivity {
@@ -27,7 +29,9 @@ public class TextActivity extends ActionBarActivity {
         assert actionBar != null;
         actionBar.hide();
 
-        //Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+        AdView mAdView = (AdView) findViewById(R.id.adViewText);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 
     @Override

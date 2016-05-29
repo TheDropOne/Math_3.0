@@ -8,9 +8,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 
 public class MainActivity extends ListActivity {
@@ -19,11 +23,12 @@ public class MainActivity extends ListActivity {
     int idItem = -1;
     public static int number = 0;
     public static int textNumber = 0;
+    FirebaseAnalytics mFirebaseAnalytics;
 
     //-------------Ads xujnya
 
     public static InterstitialAd imageAd;
-    public boolean isAdNotLooked = false;
+    public static boolean isAdNotLooked = true;
     public static int adIn = 1;
     public static int adInText = 0;
     public static int adDencity = 7;
@@ -40,7 +45,20 @@ public class MainActivity extends ListActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(), R.layout.my_list_item, classes);
         getListView().setAdapter(adapter);
 
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
 
+        isAdNotLooked = true;
+        imageAd = new InterstitialAd(this);
+        imageAd.setAdUnitId("ca-app-pub-4167275856253568~6326304131");
+        imageAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+            }
+        });
+        requestNewInterstitial();
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
@@ -48,19 +66,23 @@ public class MainActivity extends ListActivity {
                 Log.d(LOG_TAG, "itemClick: position = " + position + ", id = "
                         + id);
                 idItem = (int) id;
+                if (MainActivity.adIn > 3 && MainActivity.isAdNotLooked) {
+                    MainActivity.imageAd.show();
+                    MainActivity.isAdNotLooked = false;
+                }
                 whatActivity();
             }
         });
 
-
-
         AnalyticsApplication application = (AnalyticsApplication) getApplication();
         Tracker mTracker = application.getDefaultTracker();
     }
-
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        imageAd.loadAd(adRequest);
+    }
 
     public void whatActivity(){
-        isAdNotLooked = true;
         Intent intent = null;
         switch (idItem) {
             case 0: {

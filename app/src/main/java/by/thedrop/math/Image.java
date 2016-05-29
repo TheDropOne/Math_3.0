@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
@@ -24,7 +24,7 @@ public class Image extends ActionBarActivity {
 
     PhotoViewAttacher mAttacher;
     Bitmap bitmap;
-    InterstitialAd ad;
+    public static InterstitialAd ad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,21 +32,9 @@ public class Image extends ActionBarActivity {
             this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_image);
+
+
             MainActivity.adIn++;
-
-            ad = new InterstitialAd(this);
-            ad.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-
-            ad.setAdListener(new AdListener() {
-                @Override
-                public void onAdClosed() {
-                    requestNewInterstitial();
-                }
-            });
-            requestNewInterstitial();
-
-
-            if (MainActivity.adIn == 3) ad.show();
 
             ImageView imgView = (ImageView) findViewById(R.id.imageView);
 
@@ -58,7 +46,6 @@ public class Image extends ActionBarActivity {
 
             Button shareButton = (Button) findViewById(R.id.shareButton);
             assert shareButton != null;
-
 
             shareButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,16 +64,18 @@ public class Image extends ActionBarActivity {
             });
 
 
+            //ca-app-pub-4167275856253568/1409923336
             //Appodeal.show(this, Appodeal.BANNER_BOTTOM);
         } catch (Exception ex) {
             ex.printStackTrace();
-            Toast.makeText(this,"Упс, что-то пошло не так",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Упс, что-то пошло не так", Toast.LENGTH_SHORT).show();
         }
-    }
-    private void requestNewInterstitial() {
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
-        ad.loadAd(adRequest);
+        mAdView.loadAd(adRequest);
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
