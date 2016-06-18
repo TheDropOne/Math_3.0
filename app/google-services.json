@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "946105935449",
-    "firebase_url": "https://math-7ad52.firebaseio.com",
-    "project_id": "math-7ad52",
-    "storage_bucket": "math-7ad52.appspot.com"
+    "project_number": "551280996986",
+    "firebase_url": "https://math-al-formulas.firebaseio.com",
+    "project_id": "math-al-formulas",
+    "storage_bucket": "math-al-formulas.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:946105935449:android:ab3ffa1dc10cd1e5",
+        "mobilesdk_app_id": "1:551280996986:android:ab3ffa1dc10cd1e5",
         "android_client_info": {
           "package_name": "by.thedrop.math"
         }
       },
       "oauth_client": [
         {
-          "client_id": "946105935449-g7re2fjt2jddqtihhc2lrrr1kqo88ppb.apps.googleusercontent.com",
+          "client_id": "551280996986-hq452ct6ii9crsvmomdg9bar3je6rdlk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBriC_5lfrurIqnJo_gne7HX0tc9XppGiM"
+          "current_key": "AIzaSyBmUczKtl3fn3WiZWTXq3gm_fD8KkR6sw4"
         }
       ],
       "services": {

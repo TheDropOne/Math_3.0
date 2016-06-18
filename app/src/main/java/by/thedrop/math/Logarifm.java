@@ -19,7 +19,7 @@ public class Logarifm extends ListActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logarifm);
-        String[] classes = {"Помочь автору", "Теорема Виета", "Арифметическая прогрессия", "Геометрическая прогрессия", "Уравнение касательной", "Свойства логарифма", "Координаты вершины параболы", "Показательные неравенства", ""};//     18
+        String[] classes = {"Помочь автору", "Теорема Виета", "Арифметическая прогрессия", "Геометрическая прогрессия", "Уравнение касательной", "","","Свойства логарифма", "Координаты вершины параболы", "Показательные неравенства", ""};//     18
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(), R.layout.my_list_item, classes);
         getListView().setAdapter(adapter);
 
@@ -55,17 +55,22 @@ public class Logarifm extends ListActivity {
             case 4:
                 MainActivity.number = R.drawable.p10tangental;
                 break;
-            case 5 :
-                MainActivity.number = R.drawable.p10logarifm;
+            case 5:
+                MainActivity.number = R.drawable.p10_degree;
                 break;
             case 6:
+                MainActivity.number =R.drawable.p10korni;
+            case 7 :
+                MainActivity.number = R.drawable.p10logarifm;
+                break;
+            case 8:
                 MainActivity.number = R.drawable.p10coordinates;
                 break;
-            case 7:
+            case 9:
                 MainActivity.number = R.drawable.p10pokazatelnie;
                 break;
         }
-        if (intent == null && idItem5 != 0 && idItem5!=8) {
+        if (intent == null && idItem5 != 0 && idItem5!=10) {
             intent = new Intent(this, Image.class);
             startActivity(intent);
         }

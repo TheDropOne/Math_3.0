@@ -54,12 +54,12 @@ public class PartAB extends ListActivity {
                 case 10: MainActivity.number = R.drawable.ct2011a10;             break;
                 case 11: MainActivity.number = R.drawable.ct2011a11;            break;
                 case 12: MainActivity.number = R.drawable.ct2011a12;            break;
-                case 13: MainActivity.number = R.drawable.ct2011a1;              break;
-                case 14: MainActivity.number = R.drawable.ct2011a2;              break;
-                case 15: MainActivity.number = R.drawable.ct2011a3;              break;
-                case 16: MainActivity.number = R.drawable.ct2011a4;              break;
-                case 17: MainActivity.number = R.drawable.ct2011a5;              break;
-                case 18: MainActivity.number = R.drawable.ct2011a6;              break;
+                case 13: MainActivity.number = R.drawable.ct2011a13;              break;
+                case 14: MainActivity.number = R.drawable.ct2011a14;              break;
+                case 15: MainActivity.number = R.drawable.ct2011a15;              break;
+                case 16: MainActivity.number = R.drawable.ct2011a16;              break;
+                case 17: MainActivity.number = R.drawable.ct2011a17;              break;
+                case 18: MainActivity.number = R.drawable.ct2011a18;              break;
 
 
                 case 19: MainActivity.number = R.drawable.ct2011b1;              break;
