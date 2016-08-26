@@ -22,7 +22,7 @@ public class Advice extends ListActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advice);
-        String[] classes = {"Помочь автору", "Угадываем правильный ответ", "До экзамена неделя, я ничего не знаю", "Как лучше готовиться?", "Настроиться на 100", "Использование времени", "За день до", "Во время теста","Как учить тригонометрию?","Что самое главное?","Как не упустить ответ?" ,"Ты сдашь!",""};// 6
+        String[] classes = {"Помочь автору", "Угадываем правильный ответ", "До экзамена неделя, я ничего не знаю", "Как лучше готовиться?", "Настроиться на 100", "Использование времени", "За день до", "Во время теста","Советы на ЕГЭ от репетиторов", "Как учить тригонометрию?","Что самое главное?","Как не упустить ответ?" ,"Ты сдашь!",""};// 6
         // Как выучить тригонометрию? Что самое главное? Как не упустить ответ? Разные подходы.
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(), R.layout.my_list_item, classes);
         getListView().setAdapter(adapter);
@@ -76,28 +76,30 @@ public class Advice extends ListActivity {
                 MainActivity.textNumber = R.string.inTest;
                 break;
             case (8):
-                MainActivity.textNumber = R.string.trigonom;
+                MainActivity.textNumber = R.string.repettalks;
                 break;
             case (9):
-                MainActivity.textNumber = R.string.everyday;
+                MainActivity.textNumber = R.string.trigonom;
                 break;
             case (10):
+                MainActivity.textNumber = R.string.everyday;
+                break;
+            case (11):
                 MainActivity.textNumber = R.string.missanswer;
                 break;
-
-            case (11):
+            case (12):
                 Toast toast = Toast.makeText(this,"Я столько сил вбахал в это приложение, чтобы вбить тебе в голову знаний, так что ты просто обязан сдавать! Я в тебя верю! =)",Toast.LENGTH_LONG);
                 ViewGroup group = (ViewGroup) toast.getView();
                 TextView messageTextView = (TextView) group.getChildAt(0);
                 messageTextView.setTextSize(16);
                 toast.show();
                 break;
-            case (12):
+            case (13):
                 MainActivity.textNumber = 0;
                 b = false;
                 break;
         }
-        if (b && idItem5 != 0 && idItem5!=11) {
+        if (b && idItem5 != 0 && idItem5!=13) {
             Intent intent = new Intent(this, TextActivity.class);
             startActivity(intent);
         }

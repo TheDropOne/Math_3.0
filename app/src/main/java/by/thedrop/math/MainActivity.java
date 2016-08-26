@@ -41,7 +41,7 @@ public class MainActivity extends ListActivity {
         setContentView(R.layout.activity_main);
         String[] classes = {"Помочь автору", "Хитрости и советы", "Решения и ответы ЕГЭ и ЦТ", "Типовые задачи", "Решение типовых задач",
                 "Периметр фигур", "Площадь плоских фигур", "Площадь поверхности", "Объем тел", "Треугольник", "Радиус вписанной окружности",
-                "Радиус описанной окружности", "Тригонометрия", "Формулы сокращенного умножения", "Алгебра", "Производные, Интегралы", "Шпаргалки", "Полезные ресурсы и книги", "О приложении", ""};
+                "Радиус описанной окружности", "Тригонометрия", "Формулы сокращенного умножения", "Алгебра", "Производные, Интегралы", "Полезные ресурсы и книги", "О приложении", ""};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(), R.layout.my_list_item, classes);
         getListView().setAdapter(adapter);
 
@@ -137,17 +137,20 @@ public class MainActivity extends ListActivity {
             case 15:
                 intent = new Intent(this, Integrals.class);
                 break;
+            /*
+            Убрать комментарии когда мне заплатят.
             case 16:
                 intent = new Intent(this, Shpores.class);
                 break;
-            case 17:
+            */
+            case 16:
                 intent = new Intent(this, UsefulResourses.class);
                 break;
-            case 18:
+            case 17:
                 intent = new Intent(this, About.class);
                 break;
         }
-        if (idItem != -1 && idItem != 19 && idItem != 0) {
+        if (idItem != -1 && idItem != 18 && idItem != 0) {
             startActivity(intent);
         }
     }
