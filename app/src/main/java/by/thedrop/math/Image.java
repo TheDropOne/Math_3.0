@@ -13,8 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.InterstitialAd;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
@@ -65,15 +64,11 @@ public class Image extends ActionBarActivity {
 
 
             //ca-app-pub-4167275856253568/1409923336
-            //Appodeal.show(this, Appodeal.BANNER_BOTTOM);
+            Appodeal.show(this, Appodeal.BANNER_BOTTOM);
         } catch (Exception ex) {
             ex.printStackTrace();
             Toast.makeText(this, "Упс, что-то пошло не так", Toast.LENGTH_SHORT).show();
         }
-
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
     }
 
     @Override
@@ -82,4 +77,11 @@ public class Image extends ActionBarActivity {
         bitmap.recycle();
         bitmap = null;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Appodeal.onResume(this, Appodeal.BANNER);
+    }
+
 }

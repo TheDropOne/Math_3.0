@@ -12,8 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class HelpAuthor extends AppCompatActivity {
@@ -26,7 +25,7 @@ public class HelpAuthor extends AppCompatActivity {
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_author);
-
+/*
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-4167275856253568/3267754937");
 
@@ -38,7 +37,7 @@ public class HelpAuthor extends AppCompatActivity {
             }
         });
         requestNewInterstitial();
-
+*/
         String[] classes = {"Посмотреть рекламу","Написать хороший отзыв:)","Вступить в нашу группу вк","Рассказать друзьям!", ""};//     18
         ListView list = (ListView) findViewById(R.id.listHelp);
 
@@ -58,16 +57,19 @@ public class HelpAuthor extends AppCompatActivity {
 
     }
 
-    private void requestNewInterstitial() {
+    /*private void requestNewInterstitial() {
         AdRequest adRequest = new AdRequest.Builder().build();
         mInterstitialAd.loadAd(adRequest);
-    }
+    }*/
 
     private void whatActivity() {
         switch(idItem5){
             case 0: {
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
+                if (Appodeal.isLoaded(Appodeal.SKIPPABLE_VIDEO)) {
+                    Appodeal.show(this, Appodeal.SKIPPABLE_VIDEO);
+                }
+                else if (Appodeal.isLoaded(Appodeal.INTERSTITIAL)) {
+                    Appodeal.show(this, Appodeal.INTERSTITIAL);
                 }
             } break;
             case 1:

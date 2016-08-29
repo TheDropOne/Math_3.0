@@ -25,16 +25,6 @@
             android:textSize="22sp"
             android:textColor="#000000" />
     </ScrollView>
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id_text">
-    </com.google.android.gms.ads.AdView>
-
 
 
 

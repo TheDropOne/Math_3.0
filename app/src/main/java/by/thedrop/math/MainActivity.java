@@ -8,10 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
+import com.appodeal.ads.Appodeal;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -45,9 +43,7 @@ public class MainActivity extends ListActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getListView().getContext(), R.layout.my_list_item, classes);
         getListView().setAdapter(adapter);
 
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
-
-        isAdNotLooked = true;
+/*      MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
 
         imageAd = new InterstitialAd(this);
         imageAd.setAdUnitId("ca-app-pub-4167275856253568/7682131337");
@@ -58,7 +54,14 @@ public class MainActivity extends ListActivity {
             }
         });
         requestNewInterstitial();
+*/
 
+        String appKey = "227d5c597055a6e7131ba80ae760625a923790074e72ec8e";
+        Appodeal.disableLocationPermissionCheck();
+        Appodeal.confirm(Appodeal.SKIPPABLE_VIDEO);
+        Appodeal.initialize(this, appKey, Appodeal.INTERSTITIAL | Appodeal.SKIPPABLE_VIDEO | Appodeal.BANNER);
+
+        isAdNotLooked = true;
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -68,8 +71,14 @@ public class MainActivity extends ListActivity {
                         + id);
                 idItem = (int) id;
                 if (isAdNotLooked && MainActivity.number > 3) {
-                    imageAd.show();
-                    isAdNotLooked = false;
+                    if (Appodeal.isLoaded(Appodeal.SKIPPABLE_VIDEO)) {
+                        Appodeal.show(MainActivity.this, Appodeal.SKIPPABLE_VIDEO);
+                        isAdNotLooked = false;
+                    }
+                    if (Appodeal.isLoaded(Appodeal.INTERSTITIAL) && isAdNotLooked) {
+                        Appodeal.show(MainActivity.this, Appodeal.INTERSTITIAL);
+                        isAdNotLooked = false;
+                    }
                 }
                 whatActivity();
             }
@@ -79,11 +88,12 @@ public class MainActivity extends ListActivity {
         Tracker mTracker = application.getDefaultTracker();
     }
 
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder().build();
-        imageAd.loadAd(adRequest);
-    }
-
+    /*
+        private void requestNewInterstitial() {
+            AdRequest adRequest = new AdRequest.Builder().build();
+            imageAd.loadAd(adRequest);
+        }
+    */
     public void whatActivity() {
         Intent intent = null;
         switch (idItem) {
